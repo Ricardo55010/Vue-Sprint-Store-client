@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <button onclick="this.post"></button>
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -31,10 +32,33 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
+  data(){
+    return {
+       id : 1,
+       name: '',
+       description: '',
+       quantity: 0
+    };
+  },
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  methods: {
+    post(){
+      axios.post("http://localhost:8080/product",{id:2,name:"Queso",description:"Queso",quantity:4}).then(
+          console.log("Soy un boton")
+      )
+      console.log("Soy un boton")
+    }
+  },
+  mounted() {
+    axios.post("http://localhost:8080/product",{id:3,name:"Queso",description:"Queso",quantity:4}).then(
+        console.log("Soy un boton")
+    )
+    console.log("Soy un boton")
   }
 }
 </script>
